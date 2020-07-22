@@ -12,4 +12,12 @@ public class Channel {
     private List<Item> item;
     @Element
     private String title;
+
+    public List<Item> getItem() {
+        return item;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
