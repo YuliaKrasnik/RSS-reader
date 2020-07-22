@@ -1,0 +1,19 @@
+package ru.android.test.task.rssreader.model.modelTags;
+
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+@Root(name = "item", strict = false)
+public class Item {
+    @Element(required = false)
+    private Enclosure enclosure;
+    @Element(required = false)
+    private String link;
+    @Element(required = false)
+    private String description;
+    @Element(required = false)
+    private String title;
+    @Element(required = false)
+    private String pubDate;
+
+}
