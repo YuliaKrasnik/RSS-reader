@@ -12,13 +12,17 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import java.util.List;
+
 import ru.android.test.task.rssreader.R;
+import ru.android.test.task.rssreader.model.modelDb.News;
 
 public class ListFragment extends Fragment implements IListModuleContract.IListView{
     private IListModuleContract.IListPresenter presenter;
     private ListAdapter adapter;
     private RecyclerView recyclerView;
     private LinearLayoutManager linearLayoutManager;
+    private boolean isFirstInitialized = true;
 
     @Override
     public void setPresenter(IListModuleContract.IListPresenter presenter) {
@@ -35,5 +39,20 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
         recyclerView.setLayoutManager(linearLayoutManager);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (isFirstInitialized) {
+            presenter.onResume();
+            isFirstInitialized = false;
+        }
+    }
+
+    @Override
+    public void showNews(List<News> news) {
+        adapter = new ListAdapter(news);
+        recyclerView.setAdapter(adapter);
     }
 }

@@ -11,4 +11,16 @@ public class Enclosure {
     private String type;
     @Attribute
     private String url;
+
+    public String getLength() {
+        return length;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public String getUrl() {
+        return url;
+    }
 }

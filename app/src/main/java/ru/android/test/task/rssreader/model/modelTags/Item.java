@@ -16,4 +16,23 @@ public class Item {
     @Element(required = false)
     private String pubDate;
 
+    public Enclosure getEnclosure() {
+        return enclosure;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getPubDate() {
+        return pubDate;
+    }
 }

@@ -7,4 +7,8 @@ import org.simpleframework.xml.Root;
 public class Rss {
     @Element
     private Channel channel;
+
+    public Channel getChannel() {
+        return channel;
+    }
 }
