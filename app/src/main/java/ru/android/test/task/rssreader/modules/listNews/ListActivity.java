@@ -1,9 +1,12 @@
-package ru.android.test.task.rssreader;
+package ru.android.test.task.rssreader.modules.listNews;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.os.Bundle;
 
-public class MainActivity extends AppCompatActivity {
+import ru.android.test.task.rssreader.R;
+
+public class ListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
