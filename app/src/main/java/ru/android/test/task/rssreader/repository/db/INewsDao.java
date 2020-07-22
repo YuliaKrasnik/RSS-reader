@@ -11,12 +11,15 @@ import ru.android.test.task.rssreader.model.modelDb.News;
 
 @Dao
 public interface INewsDao {
-    @Query("SELECT * FROM news")
+    @Query("SELECT * FROM news ORDER BY id DESC")
     List<News> getNews();
 
     @Query("SELECT * FROM news LIMIT 1")
     @Nullable
     News getAnyNews();
+
+    @Query("DELETE FROM news")
+    void delete();
 
     @Insert
     void insert(News news);

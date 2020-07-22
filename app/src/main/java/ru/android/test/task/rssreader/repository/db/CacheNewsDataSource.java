@@ -18,6 +18,7 @@ public class CacheNewsDataSource implements INewsDataSource {
 
     @Override
     public void obtainNews(IObtainNewsCallback callback) {
+        //newsDao.delete();
         list = newsDao.getNews();
         callback.didObtain(list);
     }
