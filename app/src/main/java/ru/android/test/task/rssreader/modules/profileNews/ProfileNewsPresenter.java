@@ -21,7 +21,11 @@ public class ProfileNewsPresenter implements ProfileNewsModuleContract.IProfileP
 
     @Override
     public void onClickShareBtn() {
-
+        Intent shareIntent = new Intent(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_SUBJECT, news.sourceNews.titleSource);
+        shareIntent.putExtra(Intent.EXTRA_TEXT, news.title + ": " + news.link);
+        shareIntent.setType("text/plain");
+        view.setShareIntent(shareIntent);
     }
 
     @Override

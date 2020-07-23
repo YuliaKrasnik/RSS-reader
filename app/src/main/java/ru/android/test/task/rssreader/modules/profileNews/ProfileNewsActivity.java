@@ -99,7 +99,9 @@ public class ProfileNewsActivity extends AppCompatActivity implements ProfileNew
 
     @Override
     public void setShareIntent(Intent intent) {
-
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(intent, "Share with"));
+        }
     }
 
     @Override
