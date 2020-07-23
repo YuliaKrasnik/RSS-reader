@@ -6,17 +6,14 @@ import android.net.Uri;
 import ru.android.test.task.rssreader.model.modelDb.News;
 import ru.android.test.task.rssreader.model.modelDb.PhotoNews;
 import ru.android.test.task.rssreader.model.modelDb.SourceNews;
-import ru.android.test.task.rssreader.useCase.common.UseCaseExecutor;
 
 public class ProfileNewsPresenter implements ProfileNewsModuleContract.IProfilePresenter {
     private final ProfileNewsModuleContract.IProfileView view;
-    private final UseCaseExecutor useCaseExecutor;
     private boolean isFirstInitialized = true;
     private News news;
 
-    public ProfileNewsPresenter(ProfileNewsModuleContract.IProfileView view, UseCaseExecutor useCaseExecutor) {
+    public ProfileNewsPresenter(ProfileNewsModuleContract.IProfileView view) {
         this.view = view;
-        this.useCaseExecutor = useCaseExecutor;
     }
 
     @Override
