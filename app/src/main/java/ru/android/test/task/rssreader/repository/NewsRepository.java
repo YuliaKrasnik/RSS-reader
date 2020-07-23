@@ -44,4 +44,14 @@ public class NewsRepository implements INewsDataSource {
     public boolean isEmpty() {
         return newsDataSource.isEmpty();
     }
+
+    @Override
+    public void refreshNews(IObtainNewsCallback callback) {
+
+    }
+
+    @Override
+    public void writeDataRefresh(Rss parsedObject) {
+
+    }
 }

@@ -58,4 +58,14 @@ public class CacheNewsDataSource implements INewsDataSource {
         flag = news == null;
         return flag;
     }
+
+    @Override
+    public void refreshNews(IObtainNewsCallback callback) {
+
+    }
+
+    @Override
+    public void writeDataRefresh(Rss parsedObject) {
+
+    }
 }

@@ -12,6 +12,10 @@ public interface INewsDataSource {
 
     boolean isEmpty();
 
+    void refreshNews( final IObtainNewsCallback callback);
+
+    void writeDataRefresh(Rss parsedObject);
+
     interface IObtainNewsCallback {
         void didObtain(final List<News> news);
 
