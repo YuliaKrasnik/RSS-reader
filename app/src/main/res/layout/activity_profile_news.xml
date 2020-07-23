@@ -36,7 +36,7 @@
             android:id="@+id/btn_share_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
+            android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:background="@null"
             app:layout_constraintEnd_toEndOf="parent"
@@ -45,18 +45,18 @@
 
         <TextView
             android:id="@+id/tv_name_source"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:textSize="18sp"
             android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/btn_open_in_browser"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/iv_photo_news"
-            app:layout_constraintEnd_toStartOf="@+id/btn_open_in_browser"/>
+            app:layout_constraintTop_toBottomOf="@+id/iv_photo_news" />
 
         <TextView
             android:id="@+id/tv_pub_date"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:textSize="14sp"
