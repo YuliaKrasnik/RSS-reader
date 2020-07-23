@@ -17,11 +17,13 @@ import java.util.List;
 import ru.android.test.task.rssreader.R;
 import ru.android.test.task.rssreader.model.modelDb.News;
 
-public class ListFragment extends Fragment implements IListModuleContract.IListView{
+public class ListFragment extends Fragment implements IListModuleContract.IListView {
     private IListModuleContract.IListPresenter presenter;
     private ListAdapter adapter;
     private RecyclerView recyclerView;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private LinearLayoutManager linearLayoutManager;
+
     private boolean isFirstInitialized = true;
 
     @Override
@@ -38,7 +40,21 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
         linearLayoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        swipeRefreshLayout = view.findViewById(R.id.swipeRefresh);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refresh();
+            }
+        });
+
+
         return view;
+    }
+
+    private void refresh() {
+        setRefreshing(true);
+        presenter.onRefresh();
     }
 
     @Override
@@ -55,4 +71,10 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
         adapter = new ListAdapter(news);
         recyclerView.setAdapter(adapter);
     }
+
+    @Override
+    public void setRefreshing(boolean flag) {
+        swipeRefreshLayout.setRefreshing(flag);
+    }
+
 }
