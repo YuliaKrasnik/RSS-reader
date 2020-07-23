@@ -96,4 +96,14 @@ public class ProfileNewsActivity extends AppCompatActivity implements ProfileNew
     public Intent getIntentFromOtherActivity() {
         return getIntent();
     }
+
+    @Override
+    public void setShareIntent(Intent intent) {
+
+    }
+
+    @Override
+    public void setOpenInBrowserIntent(Intent intent) {
+
+    }
 }

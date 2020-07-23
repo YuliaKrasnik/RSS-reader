@@ -11,6 +11,10 @@ public interface ProfileNewsModuleContract {
         void showProfileInformation(News news);
 
         Intent getIntentFromOtherActivity();
+
+        void setShareIntent(Intent intent);
+
+        void setOpenInBrowserIntent(Intent intent);
     }
 
     interface IProfilePresenter extends IBasePresenter {
