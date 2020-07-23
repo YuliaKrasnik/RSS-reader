@@ -1,6 +1,7 @@
 package ru.android.test.task.rssreader.modules.profileNews;
 
 import android.content.Intent;
+import android.net.Uri;
 
 import ru.android.test.task.rssreader.model.modelDb.News;
 import ru.android.test.task.rssreader.model.modelDb.PhotoNews;
@@ -25,8 +26,12 @@ public class ProfileNewsPresenter implements ProfileNewsModuleContract.IProfileP
 
     @Override
     public void onCLickOpenInBrowserBtn() {
-
+        Uri uri = Uri.parse(news.link);
+        Intent intentOpenNews = new Intent(Intent.ACTION_VIEW, uri);
+        view.setOpenInBrowserIntent(intentOpenNews);
     }
+
+
 
     @Override
     public void onResume() {

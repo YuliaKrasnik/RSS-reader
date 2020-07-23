@@ -104,6 +104,8 @@ public class ProfileNewsActivity extends AppCompatActivity implements ProfileNew
 
     @Override
     public void setOpenInBrowserIntent(Intent intent) {
-
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(Intent.createChooser(intent, "Open with browser"));
+        }
     }
 }
