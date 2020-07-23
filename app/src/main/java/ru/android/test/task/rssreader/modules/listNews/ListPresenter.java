@@ -3,6 +3,8 @@ package ru.android.test.task.rssreader.modules.listNews;
 import android.content.Context;
 import android.content.Intent;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import java.util.List;
 
 import ru.android.test.task.rssreader.model.modelDb.News;
@@ -38,6 +40,11 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
     @Override
     public void onItemClicked(Context context, News news) {
         sendNewsInOtherActivity(context, news);
+    }
+
+    @Override
+    public void onScrolled(LinearLayoutManager linearLayoutManager) {
+        
     }
 
     private void sendNewsInOtherActivity(Context context, News news) {

@@ -48,6 +48,13 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
             }
         });
 
+        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+                presenter.onScrolled(linearLayoutManager);
+            }
+        });
 
         return view;
     }
