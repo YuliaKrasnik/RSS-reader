@@ -18,7 +18,7 @@ public class RefreshNewsUseCase extends UseCase<RefreshNewsUseCase.RequestValues
 
     @Override
     protected void execute(RequestValues requestValues) {
-        newsRepository.refreshNews(new INewsDataSource.IObtainNewsCallback() {
+        newsRepository.refreshNews(requestValues.countNews, new INewsDataSource.IObtainNewsCallback() {
             @Override
             public void didObtain(List<News> news) {
                 final ResponseValues responseValues = new ResponseValues(news);
@@ -33,6 +33,15 @@ public class RefreshNewsUseCase extends UseCase<RefreshNewsUseCase.RequestValues
     }
 
     public static final class RequestValues implements UseCase.IRequestValues {
+        int countNews;
+
+        public RequestValues(int countNews) {
+            this.countNews = countNews;
+        }
+
+        public void setCountNews(int countNews) {
+            this.countNews = countNews;
+        }
     }
 
     public static final class ResponseValues implements UseCase.IResponseValues {

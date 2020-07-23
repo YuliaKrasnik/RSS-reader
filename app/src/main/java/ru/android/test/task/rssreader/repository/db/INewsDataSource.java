@@ -6,13 +6,13 @@ import ru.android.test.task.rssreader.model.modelDb.News;
 import ru.android.test.task.rssreader.model.modelTags.Rss;
 
 public interface INewsDataSource {
-    void obtainNews(final IObtainNewsCallback callback);
+    void obtainNews(final int startingPosition, final int countNews, final IObtainNewsCallback callback);
 
     void writeDataStart(Rss parsedObject);
 
     boolean isEmpty();
 
-    void refreshNews( final IObtainNewsCallback callback);
+    void refreshNews(final int countNews, final IObtainNewsCallback callback);
 
     void writeDataRefresh(Rss parsedObject);
 

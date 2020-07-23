@@ -22,9 +22,9 @@ public class CacheNewsDataSource implements INewsDataSource {
     private static List<News> list = new ArrayList<>();
 
     @Override
-    public void obtainNews(IObtainNewsCallback callback) {
+    public void obtainNews(final int startingPosition, final int countNews, IObtainNewsCallback callback) {
         //newsDao.delete();
-        list = newsDao.getNews();
+        list = newsDao.getNews(startingPosition, countNews);
         callback.didObtain(list);
     }
 
@@ -65,8 +65,8 @@ public class CacheNewsDataSource implements INewsDataSource {
     }
 
     @Override
-    public void refreshNews(final IObtainNewsCallback callback) {
-        list = newsDao.getNews();
+    public void refreshNews(final int countNews, final IObtainNewsCallback callback) {
+        list = newsDao.getNews(0, countNews);
         callback.didObtain(list);
     }
 

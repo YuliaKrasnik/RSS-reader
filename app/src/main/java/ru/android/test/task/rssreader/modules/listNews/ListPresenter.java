@@ -20,6 +20,8 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
     private final ObtainNewsUseCase obtainNewsUseCase;
     private final RefreshNewsUseCase refreshNewsUseCase;
 
+    private final static int COUNT_NEWS_IN_PART = 10;
+
     public ListPresenter(IListModuleContract.IListView view, UseCaseExecutor useCaseExecutor, ObtainNewsUseCase obtainNewsUseCase, RefreshNewsUseCase refreshNewsUseCase) {
         this.view = view;
         this.useCaseExecutor = useCaseExecutor;
@@ -29,12 +31,12 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
 
     @Override
     public void onResume() {
-        obtainNews();
+        obtainNews(0,COUNT_NEWS_IN_PART);
     }
 
     @Override
     public void onRefresh() {
-        refreshNews();
+        refreshNews(COUNT_NEWS_IN_PART);
     }
 
     @Override
@@ -44,7 +46,7 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
 
     @Override
     public void onScrolled(LinearLayoutManager linearLayoutManager) {
-        
+
     }
 
     private void sendNewsInOtherActivity(Context context, News news) {
@@ -59,12 +61,11 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
         context.startActivity(intent);
     }
 
-    private void refreshNews() {
-        final RefreshNewsUseCase.RequestValues requestValues = new RefreshNewsUseCase.RequestValues();
+    private void refreshNews(int countNews) {
+        final RefreshNewsUseCase.RequestValues requestValues = new RefreshNewsUseCase.RequestValues(countNews);
         useCaseExecutor.execute(refreshNewsUseCase, requestValues, new UseCase.IUseCaseCallback<RefreshNewsUseCase.ResponseValues>() {
             @Override
             public void onSuccess(RefreshNewsUseCase.ResponseValues response) {
-
                 final List<News> news = response.getNews();
                 view.showNews(news);
                 view.setRefreshing(false);
@@ -77,8 +78,8 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
         });
     }
 
-    private void obtainNews() {
-        final ObtainNewsUseCase.RequestValues requestValues = new ObtainNewsUseCase.RequestValues();
+    private void obtainNews(int startingPosition, int countNews) {
+        final ObtainNewsUseCase.RequestValues requestValues = new ObtainNewsUseCase.RequestValues(startingPosition, countNews);
         useCaseExecutor.execute(obtainNewsUseCase, requestValues, new UseCase.IUseCaseCallback<ObtainNewsUseCase.ResponseValues>() {
             @Override
             public void onSuccess(ObtainNewsUseCase.ResponseValues response) {

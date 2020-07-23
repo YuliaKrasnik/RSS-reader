@@ -11,8 +11,8 @@ import ru.android.test.task.rssreader.model.modelDb.News;
 
 @Dao
 public interface INewsDao {
-    @Query("SELECT * FROM news ORDER BY id DESC")
-    List<News> getNews();
+    @Query("SELECT * FROM news ORDER BY id DESC LIMIT :countNews OFFSET :startingPosition")
+    List<News> getNews(int startingPosition, int countNews);
 
     @Query("SELECT * FROM news LIMIT 1")
     @Nullable

@@ -15,14 +15,14 @@ public class NewsRepository implements INewsDataSource {
     }
 
     @Override
-    public void obtainNews(final IObtainNewsCallback callback) {
+    public void obtainNews(final int startingPosition, final int countNews, final IObtainNewsCallback callback) {
         if (isEmpty()) {
             ILoadDataRSS loaderNews = new LoaderNews();
             loaderNews.loadNews(new ILoadDataRSS.ILoadNewsCallback() {
                 @Override
                 public void didLoad(final Rss rssObject) {
                     writeDataStart(rssObject);
-                    newsDataSource.obtainNews(callback);
+                    newsDataSource.obtainNews(startingPosition, countNews, callback);
                 }
 
                 @Override
@@ -31,7 +31,7 @@ public class NewsRepository implements INewsDataSource {
                 }
             });
         }
-        newsDataSource.obtainNews(callback);
+        newsDataSource.obtainNews(startingPosition, countNews, callback);
 
     }
 
@@ -46,13 +46,13 @@ public class NewsRepository implements INewsDataSource {
     }
 
     @Override
-    public void refreshNews(final IObtainNewsCallback callback) {
+    public void refreshNews(final int countNews, final IObtainNewsCallback callback) {
         ILoadDataRSS loaderNews = new LoaderNews();
         loaderNews.loadNews(new ILoadDataRSS.ILoadNewsCallback() {
             @Override
             public void didLoad(final Rss rssObject) {
                 writeDataRefresh(rssObject);
-                newsDataSource.refreshNews(callback);
+                newsDataSource.refreshNews(countNews, callback);
             }
 
             @Override
