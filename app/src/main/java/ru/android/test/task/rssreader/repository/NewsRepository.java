@@ -44,4 +44,26 @@ public class NewsRepository implements INewsDataSource {
     public boolean isEmpty() {
         return newsDataSource.isEmpty();
     }
+
+    @Override
+    public void refreshNews(final IObtainNewsCallback callback) {
+        ILoadDataRSS loaderNews = new LoaderNews();
+        loaderNews.loadNews(new ILoadDataRSS.ILoadNewsCallback() {
+            @Override
+            public void didLoad(final Rss rssObject) {
+                writeDataRefresh(rssObject);
+            }
+
+            @Override
+            public void didFailLoad(String message) {
+                Log.e("REFRESH_NEWS", "fail load");
+            }
+        });
+        newsDataSource.refreshNews(callback);
+    }
+
+    @Override
+    public void writeDataRefresh(Rss parsedObject) {
+        newsDataSource.writeDataRefresh(parsedObject);
+    }
 }

@@ -23,5 +23,9 @@ public interface INewsDao {
 
     @Insert
     void insert(News news);
+
+    @Query("SELECT pubDate FROM news WHERE id = (SELECT MAX(id) FROM news)")
+    @Nullable
+    String getLastDate();
 }
 

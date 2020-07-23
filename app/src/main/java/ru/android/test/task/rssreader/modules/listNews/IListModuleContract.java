@@ -9,10 +9,15 @@ import ru.android.test.task.rssreader.modules.common.IBaseView;
 public interface IListModuleContract {
     interface IListView extends IBaseView<IListPresenter> {
         void showNews(final List<News> news);
+
+        void setRefreshing(boolean flag);
     }
+
 
     interface IListPresenter extends IBasePresenter {
         void onResume();
+
+        void onRefresh();
 
     }
 }
