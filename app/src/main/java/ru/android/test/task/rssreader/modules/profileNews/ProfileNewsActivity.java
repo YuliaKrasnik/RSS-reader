@@ -2,13 +2,17 @@ package ru.android.test.task.rssreader.modules.profileNews;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 import ru.android.test.task.rssreader.R;
+import ru.android.test.task.rssreader.model.modelDb.News;
 import ru.android.test.task.rssreader.repository.NewsRepository;
 import ru.android.test.task.rssreader.repository.db.CacheNewsDataSource;
 import ru.android.test.task.rssreader.repository.db.INewsDataSource;
@@ -41,6 +45,12 @@ public class ProfileNewsActivity extends AppCompatActivity implements ProfileNew
         setListenerOnButton();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.onResume();
+    }
+
     void findView() {
         photoNews = findViewById(R.id.iv_photo_news);
         openInBrowser = findViewById(R.id.btn_open_in_browser);
@@ -71,5 +81,19 @@ public class ProfileNewsActivity extends AppCompatActivity implements ProfileNew
     @Override
     public void setPresenter(ProfileNewsModuleContract.IProfilePresenter presenter) {
         this.presenter = presenter;
+    }
+
+    @Override
+    public void showProfileInformation(News news) {
+        Picasso.get().load(news.photoNews.url).into(photoNews);
+        nameSource.setText(news.sourceNews.titleSource);
+        publicationDate.setText(news.pubDate);
+        headingNews.setText(news.title);
+        descriptionNews.setText(news.description);
+    }
+
+    @Override
+    public Intent getIntentFromOtherActivity() {
+        return getIntent();
     }
 }

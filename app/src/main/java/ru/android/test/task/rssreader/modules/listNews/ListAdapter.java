@@ -42,7 +42,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         return listViewHolder;
     }
 
-    List<News> getListNews() {
+    private List<News> getListNews() {
         return listNews;
     }
 
