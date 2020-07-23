@@ -52,6 +52,7 @@ public class NewsRepository implements INewsDataSource {
             @Override
             public void didLoad(final Rss rssObject) {
                 writeDataRefresh(rssObject);
+                newsDataSource.refreshNews(callback);
             }
 
             @Override
@@ -59,7 +60,6 @@ public class NewsRepository implements INewsDataSource {
                 Log.e("REFRESH_NEWS", "fail load");
             }
         });
-        newsDataSource.refreshNews(callback);
     }
 
     @Override
