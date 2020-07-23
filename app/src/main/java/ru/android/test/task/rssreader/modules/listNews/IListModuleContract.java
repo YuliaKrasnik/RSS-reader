@@ -1,5 +1,7 @@
 package ru.android.test.task.rssreader.modules.listNews;
 
+import android.content.Context;
+
 import java.util.List;
 
 import ru.android.test.task.rssreader.model.modelDb.News;
@@ -19,5 +21,6 @@ public interface IListModuleContract {
 
         void onRefresh();
 
+        void onItemClicked(Context context, News news);
     }
 }

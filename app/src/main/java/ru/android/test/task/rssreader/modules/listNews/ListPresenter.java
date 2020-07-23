@@ -1,8 +1,12 @@
 package ru.android.test.task.rssreader.modules.listNews;
 
+import android.content.Context;
+import android.content.Intent;
+
 import java.util.List;
 
 import ru.android.test.task.rssreader.model.modelDb.News;
+import ru.android.test.task.rssreader.modules.profileNews.ProfileNewsActivity;
 import ru.android.test.task.rssreader.useCase.common.UseCase;
 import ru.android.test.task.rssreader.useCase.common.UseCaseExecutor;
 import ru.android.test.task.rssreader.useCase.news.ObtainNewsUseCase;
@@ -29,6 +33,23 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
     @Override
     public void onRefresh() {
         refreshNews();
+    }
+
+    @Override
+    public void onItemClicked(Context context, News news) {
+        sendNewsInOtherActivity(context, news);
+    }
+
+    private void sendNewsInOtherActivity(Context context, News news) {
+        Intent intent = new Intent(context, ProfileNewsActivity.class);
+        intent.putExtra("id", news.id);
+        intent.putExtra("title", news.title);
+        intent.putExtra("description", news.description);
+        intent.putExtra("pubDate", news.pubDate);
+        intent.putExtra("link", news.link);
+        intent.putExtra("urlPhotoNews",news.photoNews.url);
+        intent.putExtra("titleSource", news.sourceNews.titleSource);
+        context.startActivity(intent);
     }
 
     private void refreshNews() {

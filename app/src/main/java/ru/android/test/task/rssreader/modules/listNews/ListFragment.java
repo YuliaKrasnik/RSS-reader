@@ -17,7 +17,7 @@ import java.util.List;
 import ru.android.test.task.rssreader.R;
 import ru.android.test.task.rssreader.model.modelDb.News;
 
-public class ListFragment extends Fragment implements IListModuleContract.IListView {
+public class ListFragment extends Fragment implements IListModuleContract.IListView, IListClickListener  {
     private IListModuleContract.IListPresenter presenter;
     private ListAdapter adapter;
     private RecyclerView recyclerView;
@@ -68,7 +68,7 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
 
     @Override
     public void showNews(List<News> news) {
-        adapter = new ListAdapter(news);
+        adapter = new ListAdapter(news, this);
         recyclerView.setAdapter(adapter);
     }
 
@@ -77,4 +77,8 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
         swipeRefreshLayout.setRefreshing(flag);
     }
 
+    @Override
+    public void onItemClicked(News news) {
+        presenter.onItemClicked(getContext(), news);
+    }
 }
