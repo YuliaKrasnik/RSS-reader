@@ -17,7 +17,7 @@ import java.util.List;
 import ru.android.test.task.rssreader.R;
 import ru.android.test.task.rssreader.model.modelDb.News;
 
-public class ListFragment extends Fragment implements IListModuleContract.IListView, IListClickListener  {
+public class ListFragment extends Fragment implements IListModuleContract.IListView, IListClickListener {
     private IListModuleContract.IListPresenter presenter;
     private ListAdapter adapter;
     private RecyclerView recyclerView;
@@ -85,7 +85,12 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
             recyclerView.setAdapter(adapter);
         } else {
             adapter.getListNews().addAll(news);
-            adapter.notifyDataSetChanged();
+            recyclerView.post(new Runnable() {
+                @Override
+                public void run() {
+                    adapter.notifyDataSetChanged();
+                }
+            });
         }
     }
 
