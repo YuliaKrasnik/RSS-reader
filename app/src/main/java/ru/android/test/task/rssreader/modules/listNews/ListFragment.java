@@ -1,6 +1,7 @@
 package ru.android.test.task.rssreader.modules.listNews;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,8 +24,12 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
     private RecyclerView recyclerView;
     private SwipeRefreshLayout swipeRefreshLayout;
     private LinearLayoutManager linearLayoutManager;
-
+    private Parcelable listState;
     private boolean isFirstInitialized = true;
+    private final static String LIST_STATE_KEY = "List_state";
+    private final static String COUNT_NEWS_KEY = "Count_news";
+
+    private int count = 0;
 
     @Override
     public void setPresenter(IListModuleContract.IListPresenter presenter) {
@@ -75,6 +80,30 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
         if (isFirstInitialized) {
             presenter.onResume();
             isFirstInitialized = false;
+        }
+
+        if (listState != null && adapter == null) {
+            linearLayoutManager.onRestoreInstanceState(listState);
+            presenter.restore(count);
+        }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        listState = linearLayoutManager.onSaveInstanceState();
+        outState.putParcelable(LIST_STATE_KEY, listState);
+        outState.putInt(COUNT_NEWS_KEY, adapter.getItemCount());
+    }
+
+
+    @Override
+    public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
+        super.onViewStateRestored(savedInstanceState);
+        if(savedInstanceState != null) {
+            isFirstInitialized = false;
+            listState = savedInstanceState.getParcelable(LIST_STATE_KEY);
+            count = savedInstanceState.getInt(COUNT_NEWS_KEY);
         }
     }
 

@@ -45,6 +45,7 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
     @Override
     public void onRefresh() {
         refreshNews(COUNT_NEWS_IN_PART);
+        setPageIndex(0);
     }
 
     @Override
@@ -71,6 +72,16 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
                 obtainNews(recountStartingPosition(), COUNT_NEWS_IN_PART);
             }
         }
+    }
+
+    @Override
+    public void restore(int count) {
+        setPageIndex(count/COUNT_NEWS_IN_PART -1);
+        obtainNews(0, count);
+    }
+
+    public void setPageIndex(int pageIndex) {
+        this.pageIndex = pageIndex;
     }
 
     private int recountStartingPosition() {
