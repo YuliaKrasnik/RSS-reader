@@ -16,9 +16,15 @@ public interface INewsDataSource {
 
     void writeDataRefresh(Rss parsedObject);
 
+    void getCountNewsInDb(IGetCountNewsInDbCallback callback);
+
     interface IObtainNewsCallback {
         void didObtain(final List<News> news);
 
         void didFailObtain(final int errorStatusCode);
+    }
+
+    interface IGetCountNewsInDbCallback{
+        void didGet(final int countNews);
     }
 }

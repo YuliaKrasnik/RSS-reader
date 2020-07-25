@@ -66,4 +66,9 @@ public class NewsRepository implements INewsDataSource {
     public void writeDataRefresh(Rss parsedObject) {
         newsDataSource.writeDataRefresh(parsedObject);
     }
+
+    @Override
+    public void getCountNewsInDb(IGetCountNewsInDbCallback callback) {
+        newsDataSource.getCountNewsInDb( callback);
+    }
 }

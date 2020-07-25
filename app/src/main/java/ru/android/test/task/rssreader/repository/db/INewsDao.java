@@ -27,5 +27,8 @@ public interface INewsDao {
     @Query("SELECT pubDate FROM news WHERE id = (SELECT MAX(id) FROM news)")
     @Nullable
     String getLastDate();
+
+    @Query("SELECT COUNT(*) FROM news")
+    int getCountNewsInDb();
 }
 

@@ -84,6 +84,13 @@ public class CacheNewsDataSource implements INewsDataSource {
         }
     }
 
+    @Override
+    public void getCountNewsInDb(IGetCountNewsInDbCallback callback) {
+        int countNews;
+        countNews = newsDao.getCountNewsInDb();
+        callback.didGet(countNews);
+    }
+
     private String getLastDateFromDB() {
         return newsDao.getLastDate();
     }

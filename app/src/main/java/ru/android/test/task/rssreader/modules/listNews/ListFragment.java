@@ -61,7 +61,12 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
 
     private void refresh() {
         setRefreshing(true);
+        setNullAdapter();
         presenter.onRefresh();
+    }
+
+    private void setNullAdapter() {
+        adapter = null;
     }
 
     @Override
@@ -75,8 +80,13 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
 
     @Override
     public void showNews(List<News> news) {
-        adapter = new ListAdapter(news, this);
-        recyclerView.setAdapter(adapter);
+        if (adapter == null) {
+            adapter = new ListAdapter(news, this);
+            recyclerView.setAdapter(adapter);
+        } else {
+            adapter.getListNews().addAll(news);
+            adapter.notifyDataSetChanged();
+        }
     }
 
     @Override
