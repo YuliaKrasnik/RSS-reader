@@ -33,12 +33,8 @@ public class ProfileNewsActivity extends AppCompatActivity implements ProfileNew
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_news);
 
-        final INewsDataSource newsDataSource = new CacheNewsDataSource();
-        final NewsRepository newsRepository = new NewsRepository(newsDataSource);
-
-        final UseCaseExecutor useCaseExecutor = UseCaseExecutor.getInstance();
         final ProfileNewsModuleContract.IProfileView view = this;
-        final ProfileNewsModuleContract.IProfilePresenter presenter = new ProfileNewsPresenter(view, useCaseExecutor);
+        final ProfileNewsModuleContract.IProfilePresenter presenter = new ProfileNewsPresenter(view);
         view.setPresenter(presenter);
 
         findView();
