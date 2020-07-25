@@ -73,6 +73,16 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
         }
     }
 
+    @Override
+    public void restore(int count) {
+        setPageIndex(count/COUNT_NEWS_IN_PART -1);
+        obtainNews(0, count);
+    }
+
+    public void setPageIndex(int pageIndex) {
+        this.pageIndex = pageIndex;
+    }
+
     private int recountStartingPosition() {
         return pageIndex * COUNT_NEWS_IN_PART;
     }

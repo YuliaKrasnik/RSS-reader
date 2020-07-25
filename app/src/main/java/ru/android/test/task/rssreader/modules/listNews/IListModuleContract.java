@@ -26,5 +26,7 @@ public interface IListModuleContract {
         void onItemClicked(Context context, News news);
 
         void onScrolled(LinearLayoutManager linearLayoutManager);
+
+        void restore(int count);
     }
 }
