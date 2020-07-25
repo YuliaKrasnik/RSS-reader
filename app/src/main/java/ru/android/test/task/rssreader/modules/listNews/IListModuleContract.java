@@ -2,6 +2,8 @@ package ru.android.test.task.rssreader.modules.listNews;
 
 import android.content.Context;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+
 import java.util.List;
 
 import ru.android.test.task.rssreader.model.modelDb.News;
@@ -22,5 +24,7 @@ public interface IListModuleContract {
         void onRefresh();
 
         void onItemClicked(Context context, News news);
+
+        void onScrolled(LinearLayoutManager linearLayoutManager);
     }
 }

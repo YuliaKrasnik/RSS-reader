@@ -18,7 +18,7 @@ public class ObtainNewsUseCase extends UseCase<ObtainNewsUseCase.RequestValues, 
 
     @Override
     protected void execute(RequestValues requestParameters) {
-        newsRepository.obtainNews(new INewsDataSource.IObtainNewsCallback() {
+        newsRepository.obtainNews(requestParameters.startingPosition, requestParameters.countNews, new INewsDataSource.IObtainNewsCallback() {
             @Override
             public void didObtain(List<News> news) {
                 final ResponseValues responseValues = new ResponseValues(news);
@@ -33,6 +33,21 @@ public class ObtainNewsUseCase extends UseCase<ObtainNewsUseCase.RequestValues, 
     }
 
     public static final class RequestValues implements UseCase.IRequestValues {
+        private int countNews;
+        private int startingPosition;
+
+        public RequestValues(int startingPosition, int countNews) {
+            this.startingPosition = startingPosition;
+            this.countNews = countNews;
+        }
+
+        public void setPageIndex(int startingPosition) {
+            this.startingPosition = startingPosition;
+        }
+
+        public void setCountNews(int countNews) {
+            this.countNews = countNews;
+        }
     }
 
     public static final class ResponseValues implements UseCase.IResponseValues {

@@ -42,7 +42,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         return listViewHolder;
     }
 
-    private List<News> getListNews() {
+     List<News> getListNews() {
         return listNews;
     }
 
@@ -57,4 +57,5 @@ public class ListAdapter extends RecyclerView.Adapter<ListViewHolder> {
     public int getItemCount() {
         return listNews.size();
     }
+
 }
