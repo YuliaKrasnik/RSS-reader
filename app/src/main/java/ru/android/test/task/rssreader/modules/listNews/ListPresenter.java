@@ -45,6 +45,7 @@ public class ListPresenter implements IListModuleContract.IListPresenter {
     @Override
     public void onRefresh() {
         refreshNews(COUNT_NEWS_IN_PART);
+        setPageIndex(0);
     }
 
     @Override
