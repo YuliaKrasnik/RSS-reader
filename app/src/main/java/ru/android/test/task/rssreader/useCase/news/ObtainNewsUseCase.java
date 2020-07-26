@@ -53,7 +53,7 @@ public class ObtainNewsUseCase extends UseCase<ObtainNewsUseCase.RequestValues, 
     public static final class ResponseValues implements UseCase.IResponseValues {
         private final List<News> news;
 
-        public ResponseValues(final List<News> news) {
+        ResponseValues(final List<News> news) {
             this.news = news;
         }
 

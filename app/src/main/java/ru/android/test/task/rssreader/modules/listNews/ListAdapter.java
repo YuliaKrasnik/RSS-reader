@@ -18,7 +18,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListViewHolder> {
     private final List<News> listNews;
     private IListClickListener iListClickListener;
 
-    public ListAdapter(List<News> listNews, IListClickListener iListClickListener) {
+    ListAdapter(List<News> listNews, IListClickListener iListClickListener) {
         this.listNews = listNews;
         this.iListClickListener = iListClickListener;
     }
@@ -42,7 +42,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListViewHolder> {
         return listViewHolder;
     }
 
-     List<News> getListNews() {
+    List<News> getListNews() {
         return listNews;
     }
 

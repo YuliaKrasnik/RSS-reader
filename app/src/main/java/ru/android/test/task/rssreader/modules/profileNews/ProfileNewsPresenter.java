@@ -12,7 +12,7 @@ public class ProfileNewsPresenter implements ProfileNewsModuleContract.IProfileP
     private boolean isFirstInitialized = true;
     private News news;
 
-    public ProfileNewsPresenter(ProfileNewsModuleContract.IProfileView view) {
+    ProfileNewsPresenter(ProfileNewsModuleContract.IProfileView view) {
         this.view = view;
     }
 
@@ -32,8 +32,6 @@ public class ProfileNewsPresenter implements ProfileNewsModuleContract.IProfileP
         view.setOpenInBrowserIntent(intentOpenNews);
     }
 
-
-
     @Override
     public void onResume() {
         if (isFirstInitialized) {
@@ -42,7 +40,6 @@ public class ProfileNewsPresenter implements ProfileNewsModuleContract.IProfileP
             isFirstInitialized = false;
         }
         view.showProfileInformation(news);
-
     }
 
     private News obtainInformation(Intent intent) {

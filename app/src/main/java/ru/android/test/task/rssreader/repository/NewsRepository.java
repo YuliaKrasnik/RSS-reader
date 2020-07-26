@@ -27,7 +27,7 @@ public class NewsRepository implements INewsDataSource {
 
                 @Override
                 public void didFailLoad(String message) {
-                    Log.e("LOAD_NEWS", "fail load");
+                    Log.e("LOAD_NEWS", "fail load - " + message);
                 }
             });
         }
@@ -57,7 +57,7 @@ public class NewsRepository implements INewsDataSource {
 
             @Override
             public void didFailLoad(String message) {
-                Log.e("REFRESH_NEWS", "fail load");
+                Log.e("LOAD_NEWS", "fail load - " + message);
             }
         });
     }
@@ -69,6 +69,6 @@ public class NewsRepository implements INewsDataSource {
 
     @Override
     public void getCountNewsInDb(IGetCountNewsInDbCallback callback) {
-        newsDataSource.getCountNewsInDb( callback);
+        newsDataSource.getCountNewsInDb(callback);
     }
 }

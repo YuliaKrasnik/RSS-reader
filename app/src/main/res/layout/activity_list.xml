@@ -5,6 +5,6 @@
     android:layout_height="match_parent"
     tools:context=".modules.listNews.ListActivity"
     android:id="@+id/fragment_container"
-    android:background="#EBEBEB">
+    android:background="@color/background_list">
 
 </FrameLayout>

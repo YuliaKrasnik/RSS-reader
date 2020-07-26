@@ -100,7 +100,7 @@ public class ListFragment extends Fragment implements IListModuleContract.IListV
     @Override
     public void onViewStateRestored(@Nullable Bundle savedInstanceState) {
         super.onViewStateRestored(savedInstanceState);
-        if(savedInstanceState != null) {
+        if (savedInstanceState != null) {
             isFirstInitialized = false;
             listState = savedInstanceState.getParcelable(LIST_STATE_KEY);
             count = savedInstanceState.getInt(COUNT_NEWS_KEY);

@@ -13,7 +13,6 @@ class NetworkService {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(SimpleXmlConverterFactory.create())
                 .build();
-
     }
 
     static NetworkService getInstance() {
