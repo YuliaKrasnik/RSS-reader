@@ -20,7 +20,7 @@ public abstract class UseCase<RequestParametersType extends UseCase.IRequestValu
         void onError(final String errorMessage);
     }
 
-    public void run() {
+    void run() {
         execute(requestParameters);
     }
 
@@ -28,7 +28,7 @@ public abstract class UseCase<RequestParametersType extends UseCase.IRequestValu
         return requestParameters;
     }
 
-    public void setRequestParameters(final RequestParametersType requestParameters) {
+    void setRequestParameters(final RequestParametersType requestParameters) {
         this.requestParameters = requestParameters;
     }
 
@@ -36,7 +36,7 @@ public abstract class UseCase<RequestParametersType extends UseCase.IRequestValu
         return callback;
     }
 
-    public void setCallback(final IUseCaseCallback<ResponseType> callback) {
+    void setCallback(final IUseCaseCallback<ResponseType> callback) {
         this.callback = callback;
     }
 }

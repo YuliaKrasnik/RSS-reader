@@ -13,10 +13,6 @@ import com.squareup.picasso.Picasso;
 
 import ru.android.test.task.rssreader.R;
 import ru.android.test.task.rssreader.model.modelDb.News;
-import ru.android.test.task.rssreader.repository.NewsRepository;
-import ru.android.test.task.rssreader.repository.db.CacheNewsDataSource;
-import ru.android.test.task.rssreader.repository.db.INewsDataSource;
-import ru.android.test.task.rssreader.useCase.common.UseCaseExecutor;
 
 public class ProfileNewsActivity extends AppCompatActivity implements ProfileNewsModuleContract.IProfileView {
     private ProfileNewsModuleContract.IProfilePresenter presenter;

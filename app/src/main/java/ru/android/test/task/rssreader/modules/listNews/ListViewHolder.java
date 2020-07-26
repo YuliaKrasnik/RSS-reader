@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import ru.android.test.task.rssreader.R;
 
-public class ListViewHolder extends RecyclerView.ViewHolder {
+class ListViewHolder extends RecyclerView.ViewHolder {
     private TextView titleNews;
     private TextView dateNews;
     private ImageView imageNews;

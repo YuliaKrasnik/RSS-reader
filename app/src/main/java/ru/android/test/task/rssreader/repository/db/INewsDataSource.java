@@ -24,7 +24,7 @@ public interface INewsDataSource {
         void didFailObtain(final int errorStatusCode);
     }
 
-    interface IGetCountNewsInDbCallback{
+    interface IGetCountNewsInDbCallback {
         void didGet(final int countNews);
     }
 }

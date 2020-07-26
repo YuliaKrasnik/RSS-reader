@@ -100,7 +100,6 @@ public class CacheNewsDataSource implements INewsDataSource {
         try {
             DateFormat formatter = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.US);
             formattedDate = formatter.parse(dateStr);
-            //       String pubDAteText = formatter.format(formattedDate);
         } catch (ParseException e) {
             e.printStackTrace();
         }

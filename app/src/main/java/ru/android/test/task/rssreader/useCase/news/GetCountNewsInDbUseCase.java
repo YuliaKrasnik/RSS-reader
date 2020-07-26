@@ -12,8 +12,8 @@ public class GetCountNewsInDbUseCase extends UseCase<GetCountNewsInDbUseCase.Req
     }
 
     @Override
-    protected void execute (RequestValues requestValues) {
-        newsRepository.getCountNewsInDb( new INewsDataSource.IGetCountNewsInDbCallback() {
+    protected void execute(RequestValues requestValues) {
+        newsRepository.getCountNewsInDb(new INewsDataSource.IGetCountNewsInDbCallback() {
             @Override
             public void didGet(int countNews) {
                 final GetCountNewsInDbUseCase.ResponseValues responseValues = new GetCountNewsInDbUseCase.ResponseValues(countNews);
@@ -28,7 +28,7 @@ public class GetCountNewsInDbUseCase extends UseCase<GetCountNewsInDbUseCase.Req
     public static final class ResponseValues implements UseCase.IResponseValues {
         private final int count;
 
-        public ResponseValues(int count) {
+        ResponseValues(int count) {
             this.count = count;
         }
 
